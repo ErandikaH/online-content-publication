@@ -1,0 +1,55 @@
+.Publication {
+  text-align: left;
+  margin-top: 1vh;
+  margin-left: 3vh;
+  margin-right: 3vh;
+  margin-bottom: 2vh;
+}
+
+.Publication-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Publication-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.Publication-header {
+  background-color: #282c34;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(30px + 5vmin);
+  font-style: oblique;
+  color: rgb(236, 197, 197);
+}
+
+.Publication-body {
+  background-color: #282c34;
+  text-align: left;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Publication-link {
+  color: #61dafb;
+}
+
+@keyframes Publication-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
