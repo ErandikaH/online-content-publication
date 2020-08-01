@@ -1,0 +1,55 @@
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:mysql://milie-dev.cvy6yph6r44i.ap-south-1.rds.amazonaws.com/ewallet
+    username: admin
+    password: ${DB_PASSWORD}
+    driverclassname: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-api.milieapp.com:8443/auth/realms/ewallet
+          jwk-set-uri: https://dev-api.milieapp.com:8443/auth/realms/ewallet/protocol/openid-connect/certs
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+ewallet:
+  otp:
+    algorithm: SHA1PRNG
+    timeout: 180000 #miliseconds
+    message: "Please use above code to verify your phone number with Milie"
+  twilio:
+    accountId: ${TWILIO_ACCOUNT_ID}
+    token: ${TWILIO_TOKEN}
+    fromNumber: ${TWILIO_PHONE_NUMBER}
+  s3:
+    bucket-name: mobile-ewallet-milie-dev
+  send-grid:
+    token: ${SENDGRIP_API_TOKEN}
+    domain: support@milieapp.com
+    template:
+      user-creation: d-27274f5f92b648569a4ca4150a771486
+      order-creation: d-82f1b9457eb24055adf2dd97801ab0be
+  firebaseUrl: https://api.milieapp.com:8443/auth
+  bathPath: https://dev-api.milieapp.com/
+
+keycloak:
+  serverUrl: https://dev-api.milieapp.com:8443/auth
+  realm: Ewallet
+  username: admin
+  password: ${KEYCLOAK_PASSWORD}
+  clientId: admin-cli
+
+cloud:
+  aws:
+    stack:
+      auto: false
