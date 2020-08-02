@@ -21,7 +21,7 @@ export class NavigationBar extends React.Component {
 
                 <Form inline>
                     <Button variant="outline-info" onClick={() => history.push('/login')}>Sign in</Button>&nbsp;&nbsp;&nbsp;
-                    <Button variant="outline-info">Sign up</Button>
+                    <Button variant="outline-info" onClick={() => history.push('/signup')}>Sign up</Button>
                 </Form>
             </Navbar>
         );

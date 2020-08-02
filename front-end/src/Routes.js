@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Router, Switch, Route } from "react-router-dom";
 
-import Publication from "./components/publication";
+import CreateArticle from "./components/createArticle";
 import LogIn from "./components/login";
 import Home from "./components/home";
 import Welcome from './components/welcome';
+import Publication from './components/publication';
+import SignUp from './components/signup';
 
 import history from './history';
 
@@ -16,7 +18,9 @@ export default class Routes extends Component {
                     <Route path="/" exact component={Welcome} />
                     <Route path="/login" exact component={LogIn} />
                     <Route path="/home" component={Home} />
-                    <Route path="/publication" component={Publication} />
+                    <Route path="/publication" component={CreateArticle} />
+                    <Route path="/content/:id" component={Publication} />
+                    <Route path="/signup" component={SignUp} />
                 </Switch>
             </Router>
         )

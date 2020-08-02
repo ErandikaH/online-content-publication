@@ -32,7 +32,7 @@ export class LogIn extends Component {
                         <button class="btn btn-primary" onClick={() => history.push('/home')}>Sign in</button>
                         <div class="dropdown-divider"></div>
                         <div>
-                            New around here?&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-primary">Sign Up</button>
+                            New around here?&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-primary" onClick={() => history.push('/signup')}>Sign Up</button>
                         </div>
                         <a href="#">Forgot password?</a>
                     </form>

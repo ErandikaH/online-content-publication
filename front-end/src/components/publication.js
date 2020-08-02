@@ -1,98 +1,47 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSave, faUndo } from '@fortawesome/free-solid-svg-icons';
+import { Card } from 'react-bootstrap';
 
 import axios from 'axios';
-
-import './publication.css';
 
 export class Publication extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = this.initialState;
-        this.submitPublication = this.submitPublication.bind(this);
-        this.publicationChange = this.publicationChange.bind(this);
-    }
-
-    initialState = {
-        title: '', category: '', summary: '', details: ''
-    }
-
-    resetPublication = () => {
-        this.setState(() => this.initialState);
-    }
-
-    publicationChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
-
-    submitPublication = event => {
-        event.preventDefault();
-        const publication = {
-            title: this.state.title,
-            category: '3',
-            summary: this.state.summary,
-            details: this.state.details
+        this.state = {
+            publication: [],
+            search: '',
+            currentPage: 1,
+            publicationsPerPage: 20,
+            sortDir: "asc",
+            category: "Select an item"
         };
+    }
 
-        axios.post("http://localhost:8081/content/1", publication)
-            .then(response => {
-                if (response.data != null) {
-                    this.setState(this.initialState);
-                    alert('Article saved successfully.');
+    componentDidMount() {
+        let publicationId = this.props.match.params.id;
+        axios.get("http://localhost:8080/content/" + publicationId)
+            .then(response => response.data).then(
+                (data) => {
+                    console.log(data);
+                    this.setState({ publication: data });
                 }
-            });
+            );
     }
 
     render() {
-        const { title, category, summary, details } = this.state;
         return (
-            <Form onReset={this.resetPublication} onSubmit={this.submitPublication} id="publicationFormId">
-                <div className="Publication text-white">
-                    <div class="form-group row">
-                        <label for="title" class="col-sm-2 col-form-label">Title</label>
-                        <div class="col-sm-10">
-                            <input type="title" class="form-control" id="title" placeholder="Title" value={title} name="title" required onChange={this.publicationChange}></input>
-                        </div>
-                    </div>
+            <div className="center">
+                <Card>
+                    <Card.Body>
+                        <Card.Title>{this.state.publication.title}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">[user]</Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted">[{this.state.publication.publishedDate}]</Card.Subtitle>
+                        <Card.Text>{this.state.publication.summary}</Card.Text>
+                        <Card.Text>{this.state.publication.details}</Card.Text>
+                    </Card.Body>
+                </Card>
+            </div>
 
-                    <div class="form-group row">
-                        <label for="category" class="col-sm-2 col-form-label">Select Category</label>
-                        <div class="col-sm-10">
-                            <select id="inlineFormCustomSelect" name="category">
-                                <option selected>Choose...</option>
-                                <option value="1">ML/AI</option>
-                                <option value="2">Big Data</option>
-                                <option value="3">Micro-services</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="summary" class="col-sm-2 col-form-label">Summary</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" id="summary" rows="3" value={summary} name="summary" required onChange={this.publicationChange}></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="content" class="col-sm-2 col-form-label">Content</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" id="details" rows="10" value={details} name="details" required onChange={this.publicationChange}></textarea>
-                        </div>
-                    </div>
-                    <Button size="sm" variant="success" type="submit">
-                        <FontAwesomeIcon icon={faSave} /> Publish
-                            </Button>{' '}
-                    <Button size="sm" variant="info" type="reset">
-                        <FontAwesomeIcon icon={faUndo} /> Reset
-                            </Button>{' '}
-                </div>
-            </Form>
         );
     }
 }
