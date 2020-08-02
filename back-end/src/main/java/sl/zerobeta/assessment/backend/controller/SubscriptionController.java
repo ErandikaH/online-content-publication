@@ -1,14 +1,12 @@
 package sl.zerobeta.assessment.backend.controller;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import sl.zerobeta.assessment.backend.dto.PublicationCommentDTO;
 import sl.zerobeta.assessment.backend.dto.SubscriptionDTO;
-import sl.zerobeta.assessment.backend.model.Comment;
-import sl.zerobeta.assessment.backend.service.CommentService;
+import sl.zerobeta.assessment.backend.model.Publication;
 import sl.zerobeta.assessment.backend.service.SubscriptionService;
-
-import java.util.List;
 
 /**
  * @author Erandika Harshani
@@ -26,6 +24,8 @@ public class SubscriptionController {
         this.subscriptionService = subscriptionService;
     }
 
+    @ApiOperation(value = "Add Subscriptions",
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @PostMapping
     public void addSubscription(@RequestBody SubscriptionDTO subscriptionDTO){
         this.subscriptionService.addSubscription(subscriptionDTO);
