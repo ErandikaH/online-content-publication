@@ -18,4 +18,7 @@ public class UserDTO {
     @NotEmpty
     private String password;
     private String fireBaseRegistration;
+    private String fullName;
+    private String countryOfOrigin;
+    private String description;
 }

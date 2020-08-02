@@ -1,7 +1,6 @@
 package sl.zerobeta.assessment.backend.service;
 
 import sl.zerobeta.assessment.backend.dto.UserDTO;
-import sl.zerobeta.assessment.backend.dto.UserUpdateDTO;
 import sl.zerobeta.assessment.backend.model.User;
 
 /**
@@ -13,6 +12,6 @@ public interface UserService {
 
     User findUserByEmail(String email);
 
-    void updateUser(UserUpdateDTO userUpdateDTO);
+    void updateUser(UserDTO userDTO, Long userId);
 
 }

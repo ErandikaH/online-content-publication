@@ -4,10 +4,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sl.zerobeta.assessment.backend.dto.UserDTO;
-import sl.zerobeta.assessment.backend.dto.UserUpdateDTO;
 import sl.zerobeta.assessment.backend.exceptions.UserAlreadyExistException;
 import sl.zerobeta.assessment.backend.exceptions.UserNotFoundException;
-import sl.zerobeta.assessment.backend.model.Publication;
 import sl.zerobeta.assessment.backend.model.User;
 import sl.zerobeta.assessment.backend.repository.UserRepository;
 import sl.zerobeta.assessment.backend.service.UserService;
@@ -52,21 +50,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(UserUpdateDTO userUpdateDTO) {
-        Optional<User> optionalUser = this.userRepository.findById(userUpdateDTO.getUserId());
+    public void updateUser(UserDTO userDTO, Long userId) {
+        Optional<User> optionalUser = this.userRepository.findById(userId);
         User user = null;
         if(!optionalUser.isPresent()){
             throw new UserNotFoundException("User already exist");
         }
         user = optionalUser.get();
-        if(null!=userUpdateDTO.getFullName() && !userUpdateDTO.getFullName().isEmpty()){
-            user.setFullName(userUpdateDTO.getFullName());
+        if(null!=userDTO.getEmail() && !userDTO.getEmail().isEmpty()){
+            user.setEmail(userDTO.getEmail());
         }
-        if(null!=userUpdateDTO.getCountryOfOrigin() && !userUpdateDTO.getCountryOfOrigin().isEmpty()){
-            user.setCountryOfOrigin(userUpdateDTO.getCountryOfOrigin());
+        if(null!=userDTO.getFullName() && !userDTO.getFullName().isEmpty()){
+            user.setFullName(userDTO.getFullName());
         }
-        if(null!=userUpdateDTO.getDescription() && !userUpdateDTO.getDescription().isEmpty()){
-            user.setDescription(userUpdateDTO.getDescription());
+        if(null!=userDTO.getCountryOfOrigin() && !userDTO.getCountryOfOrigin().isEmpty()){
+            user.setCountryOfOrigin(userDTO.getCountryOfOrigin());
+        }
+        if(null!=userDTO.getDescription() && !userDTO.getDescription().isEmpty()){
+            user.setDescription(userDTO.getDescription());
+        }
+        if(null!=userDTO.getPassword() && !userDTO.getPassword().isEmpty()){
+            user.setPassword(userDTO.getPassword());
         }
         this.userRepository.save(user);
     }
