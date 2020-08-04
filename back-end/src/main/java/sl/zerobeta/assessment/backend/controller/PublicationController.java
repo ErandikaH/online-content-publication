@@ -17,7 +17,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("content")
-@CrossOrigin(origins = "http://localhost:3000")
 public class PublicationController {
 
     private final PublicationService publicationService;
