@@ -2,7 +2,7 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://localhost:3000/online_publication",
+  "homepage": "online_publication",
   "proxy": "http://ec2-52-77-223-85.ap-southeast-1.compute.amazonaws.com",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
