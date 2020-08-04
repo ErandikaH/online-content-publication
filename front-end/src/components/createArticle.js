@@ -39,7 +39,7 @@ export class CreateArticle extends React.Component {
             details: this.state.details
         };
 
-        axios.post("http://ec2-52-77-223-85.ap-southeast-1.compute.amazonaws.com/content/publish/1", publication)
+        axios.post("/content/publish/1", publication)
             .then(response => {
                 if (response.data != null) {
                     this.setState(this.initialState);

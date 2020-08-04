@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "online_publication",
-  "proxy": "http://ec2-52-77-223-85.ap-southeast-1.compute.amazonaws.com",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
@@ -45,7 +44,9 @@
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "http-proxy-middleware": "^1.0.5"
+  },
   "author": "",
   "license": "ISC"
 }

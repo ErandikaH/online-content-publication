@@ -42,7 +42,7 @@ export class SignUp extends React.Component {
             password: this.state.password
         };
 
-        axios.post("http://ec2-52-77-223-85.ap-southeast-1.compute.amazonaws.com/user", user)
+        axios.post("/user", user)
             .then(response => {
                 if (response.data != null) {
                     this.setState(this.initialState);

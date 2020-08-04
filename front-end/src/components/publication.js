@@ -19,7 +19,7 @@ export class Publication extends React.Component {
 
     componentDidMount() {
         let publicationId = this.props.match.params.id;
-        axios.get("http://ec2-52-77-223-85.ap-southeast-1.compute.amazonaws.com/content/" + publicationId)
+        axios.get("/content/" + publicationId)
             .then(response => response.data).then(
                 (data) => {
                     console.log(data);
