@@ -28,7 +28,7 @@ export class Home extends React.Component {
     }
 
     getPubilcationList = (e) => {
-        axios.get("http://localhost:8080/content/publications/" + e)
+        axios.get("/content/publications/" + e)
             .then(response => response.data).then(
                 (data) => {
                     console.log(data);

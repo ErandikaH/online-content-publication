@@ -34,12 +34,12 @@ export class CreateArticle extends React.Component {
         event.preventDefault();
         const publication = {
             title: this.state.title,
-            category: '3',
+            category: this.state.category,
             summary: this.state.summary,
             details: this.state.details
         };
 
-        axios.post("http://localhost:8080/content/1", publication)
+        axios.post("/content/publish/1", publication)
             .then(response => {
                 if (response.data != null) {
                     this.setState(this.initialState);
@@ -49,7 +49,7 @@ export class CreateArticle extends React.Component {
     }
 
     render() {
-        const { title, category, summary, details } = this.state;
+        const { title, summary, details } = this.state;
         return (
             <Form onReset={this.resetPublication} onSubmit={this.submitPublication} id="publicationFormId">
                 <div className="Publication text-white">
@@ -63,7 +63,7 @@ export class CreateArticle extends React.Component {
                     <div class="form-group row">
                         <label for="category" class="col-sm-2 col-form-label">Select Category</label>
                         <div class="col-sm-10">
-                            <select id="inlineFormCustomSelect" name="category">
+                            <select id="inlineFormCustomSelect" name="category" onChange={this.publicationChange}>
                                 <option selected>Choose...</option>
                                 <option value="1">ML/AI</option>
                                 <option value="2">Big Data</option>

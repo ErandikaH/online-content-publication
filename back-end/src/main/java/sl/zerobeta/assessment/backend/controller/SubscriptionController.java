@@ -14,7 +14,6 @@ import sl.zerobeta.assessment.backend.service.SubscriptionService;
  */
 @RestController
 @RequestMapping("subscription")
-@CrossOrigin(origins = "http://localhost:3000")
 public class SubscriptionController {
 
     private final SubscriptionService subscriptionService;
