@@ -42,7 +42,7 @@ export class Home extends React.Component {
             <div className="center">
                 <h3 className="text-white">PubCon</h3>
                 <p className="text-white">Erandika Harshani</p>
-                <button onClick={() => history.push('/publication')} class="btn btn-primary">Publish My Story</button>
+                <button onClick={() => history.push('/create_publication')} class="btn btn-primary">Publish My Story</button>
                 &nbsp;&nbsp;&nbsp;<button class="btn btn-warning" disabled='true'>Subscribe ML/AI</button>
                 &nbsp;&nbsp;&nbsp;<button class="btn btn-info" disabled='true'>Subscribe Big Data</button>
                 &nbsp;&nbsp;&nbsp;<button class="btn btn-danger" disabled='true'>Subscribe Micro-services</button>
@@ -64,7 +64,7 @@ export class Home extends React.Component {
                                         <Card.Title>{publication.title}</Card.Title>
                                         <Card.Subtitle className="mb-2 text-muted">[user]</Card.Subtitle>
                                         <Card.Text>{publication.summary}</Card.Text>
-                                        <Card.Link href={"/content/"+publication.id}>Publication Link</Card.Link>
+                                        <Card.Link href={"/publication/"+publication.id}>Publication Link</Card.Link>
                                     </Card.Body>
                                 </Card>
                             )
