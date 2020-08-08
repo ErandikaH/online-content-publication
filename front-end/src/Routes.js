@@ -18,8 +18,8 @@ export default class Routes extends Component {
                     <Route path="/online_publication" exact component={Welcome} />
                     <Route path="/login" exact component={LogIn} />
                     <Route path="/home" component={Home} />
-                    <Route path="/publication" component={CreateArticle} />
-                    <Route path="/content/:id" component={Publication} />
+                    <Route path="/create_publication" component={CreateArticle} />
+                    <Route path="/publication/:id" component={Publication} />
                     <Route path="/signup" component={SignUp} />
                 </Switch>
             </Router>
